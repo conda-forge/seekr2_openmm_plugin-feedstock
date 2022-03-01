@@ -31,7 +31,7 @@ requirements:
     - swig
     - pthread-stubs
     - lxml
-    - {{ pin_compatible('numpy') }}
+    #- {{ pin_compatible('numpy') }}
     - cython
     # needed for Python wrappers
     - doxygen 1.8.14
@@ -43,7 +43,7 @@ requirements:
     - python
     - fftw
     - openmm
-    - {{ pin_compatible('numpy') }}
+    #- {{ pin_compatible('numpy') }}
     - swig
     - pthread-stubs
     # OpenCL ICD
