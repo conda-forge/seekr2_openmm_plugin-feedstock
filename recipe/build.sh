@@ -1,7 +1,5 @@
 #!/bin/bash
 
-{{ PYTHON }} -m pip install . -vv
-
 CMAKE_ARGS="$CMAKE_ARGS -DCMAKE_BUILD_TYPE=Release -DSEEKR2_BUILD_OPENCL_LIB=OFF -DOPENMM_DIR=$PREFIX"
 
 if [[ "$target_platform" == linux* ]]; then

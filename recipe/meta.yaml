@@ -26,6 +26,7 @@ requirements:
   host:
     - openmm
     - python
+    - pip
     - fftw
     - swig
     - pthread-stubs
@@ -54,12 +55,14 @@ requirements:
 test:
   requires:
     - pocl  # [unix]
+    - pip
   imports:
     - simtk
     - simtk.openmm
   commands:
 #    - python -m simtk.testInstallation
 #    # Existence tests Unix
+    - pip check
     - test -f $PREFIX/lib/plugins/libSeekr2PluginCUDA$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
 
