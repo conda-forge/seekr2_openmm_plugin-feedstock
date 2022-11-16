@@ -1,5 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.4" %}
+{% set build = 2 %}
 
 package:
   name: {{ name }}
@@ -14,7 +15,7 @@ source:
 # shasum -a 256 0.1.4.tar.gz
 
 build:
-  number: 2
+  number: {{ build }}
   skip: true  # [win or osx or (linux64 and cuda_compiler_version == "None")]
   
 requirements:
@@ -30,7 +31,7 @@ requirements:
     - python
     - pip
     - fftw
-    - swig
+    - swig 4.0.2
     - pthread-stubs
     - lxml
     #- {{ pin_compatible('numpy') }}
@@ -46,7 +47,7 @@ requirements:
     - fftw
     - openmm
     #- {{ pin_compatible('numpy') }}
-    - swig
+    - swig 4.0.2
     - pthread-stubs
     # OpenCL ICD
     - khronos-opencl-icd-loader  # [osx or win]
