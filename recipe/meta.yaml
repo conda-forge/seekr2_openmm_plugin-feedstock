@@ -16,7 +16,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [win or osx or (linux64 and cuda_compiler_version == "None")]
+  skip: true # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
@@ -28,6 +28,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux]
     - cmake
+    - sysroot_linux-64 2.17  # [linux64]
 
   host:
     - openmm
