@@ -13,14 +13,21 @@ if [[ "$target_platform" == linux* ]]; then
     # Use GCC
     CMAKE_ARGS+=" -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
 
-    # CUDA_HOME is defined by nvcc metapackage
-    CMAKE_ARGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
-    # From: https://github.com/floydhub/dl-docker/issues/59
-    CMAKE_ARGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
-    CMAKE_ARGS+=" -DCUDA_CUDA_LIBRARY=${CUDA_HOME}/lib64/stubs/libcuda.so"
+    if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
+        # CUDA_HOME is defined by nvcc metapackage
+        CMAKE_ARGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
+        
+        # From: https://github.com/floydhub/dl-docker/issues/59
+        CMAKE_ARGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
+        CMAKE_ARGS+=" -DCUDA_CUDA_LIBRARY=${CUDA_HOME}/lib64/stubs/libcuda.so"
+        CMAKE_ARGS+=" -DSEEKR2_CUDA_BUILD_TESTS=OFF"
+        
+        # shadow some CMAKE_ARGS bits that interfere with CUDA detection
+        CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
+    fi
     
     # Cuda tests won't build. Disable all tests for now
-    CMAKE_ARGS+=" -DSEEKR2_CUDA_BUILD_TESTS=OFF"
+    
     CMAKE_ARGS+=" -DSEEKR2_REFERENCE_BUILD_TESTS=OFF"
     CMAKE_ARGS+=" -DSEEKR2_BUILD_SERIALIZATION_TESTS=OFF"
 fi
