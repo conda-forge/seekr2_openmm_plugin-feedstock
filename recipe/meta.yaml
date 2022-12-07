@@ -26,7 +26,7 @@ requirements:
     - openmm
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux]
+    - {{ compiler('cuda') }}  # [linux64 or ppc641le or win]
     - cmake
     - sysroot_linux-64 2.17  # [linux64]
 
@@ -63,6 +63,9 @@ test:
   requires:
     - pocl  # [unix]
     - pip
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ compiler("cuda") }}  # tests need nvcc
   imports:
     - openmm
   commands:
@@ -71,6 +74,7 @@ test:
     - pip check
     - test -f $PREFIX/lib/plugins/libSeekr2PluginCUDA$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
+    - export CUDA_VISIBLE_DEVICES=0
     - python -m seekr2plugin
 
 about:
