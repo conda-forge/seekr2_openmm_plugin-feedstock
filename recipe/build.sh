@@ -18,12 +18,13 @@ if [[ "$target_platform" == linux* ]]; then
         CMAKE_ARGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
         
         # From: https://github.com/floydhub/dl-docker/issues/59
-        CMAKE_ARGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
-        CMAKE_ARGS+=" -DCUDA_CUDA_LIBRARY=${CUDA_HOME}/lib64/stubs/libcuda.so"
+        #CMAKE_ARGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
+        #CMAKE_ARGS+=" -DCUDA_CUDA_LIBRARY=${CUDA_HOME}/lib64/stubs/libcuda.so"
+        #CMAKE_ARGS+=" -DSEEKR2_CUDA_BUILD_TESTS=OFF"
         CMAKE_ARGS+=" -DSEEKR2_CUDA_BUILD_TESTS=OFF"
         
         # shadow some CMAKE_ARGS bits that interfere with CUDA detection
-        CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
+        CMAKE_ARGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
     fi
     
     # Cuda tests won't build. Disable all tests for now
