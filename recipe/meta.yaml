@@ -1,5 +1,5 @@
 {% set name = "seekr2_openmm_plugin" %}
-{% set version = "0.1.4" %}
+{% set version = "0.1.5" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 6deff2c0c3b6e3f1e7ed66dd30fb4bad34dafb62b4a8cac4e877add97122f4a6
+  sha256: f292051f533b20dd97cd0e8ba7f55a9313f4a8591f8cdf31e278758f02a664cc
 
 # used command: shasum -a 256 seekr2_openmm_plugin-0.1.0.tar.gz
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win or osx or (linux64 and cuda_compiler_version == "None")]
-  
+
 requirements:
   build:
     - openmm
@@ -38,7 +38,6 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [osx or win]
-    
   run:
     - python
     - fftw
