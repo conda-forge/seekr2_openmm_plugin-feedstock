@@ -11,5 +11,7 @@ test_on_native_only: true
 github:
   branch_name: master
   tooling_branch_name: master
+conda_build:
+  pkg_format: '2'
 os_version:
   linux_64: cos7
