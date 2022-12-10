@@ -32,10 +32,10 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - swig                                   # [build_platform != target_platform]
-    - openmm
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64 or ppc641le or win]
+    - openmm
     - cmake
     - make
     - sysroot_linux-64 2.17  # [linux64]
