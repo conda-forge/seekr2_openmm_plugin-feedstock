@@ -1,5 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
-{% set version = "0.1.4" %}
+{% set version = "0.1.5" %}
+{% set build = 0 %}
 
 package:
   name: {{ name }}
@@ -7,28 +8,46 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 6deff2c0c3b6e3f1e7ed66dd30fb4bad34dafb62b4a8cac4e877add97122f4a6
+  sha256: f292051f533b20dd97cd0e8ba7f55a9313f4a8591f8cdf31e278758f02a664cc
 
-# used command: shasum -a 256 seekr2_openmm_plugin-0.1.0.tar.gz
+# used commands:
+# wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.5.tar.gz
+# shasum -a 256 0.1.5.tar.gz
 
 build:
-  number: 1
-  skip: true  # [win or osx or (linux64 and cuda_compiler_version == "None")]
+  number: {{ build }}
+  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or (cuda_compiler_version != '10.2')]
+  script_env:
+    - CONFIG
+    - CUDA_HOME  # [ppc64le]
+  missing_dso_whitelist:
+    - "*/libcuda.*"    # [linux64 or ppc64le]
+    - "*/libOpenCL.*"  # [unix]
+    - "*/nvcuda.dll"   # [win]
   
 requirements:
   build:
-    - openmm
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux]
+    - {{ compiler('cuda') }}  # [linux64 or ppc641le or win]
+    - openmm
     - cmake
+    - make
+    - sysroot_linux-64 2.17  # [linux64]
+    - doxygen
+    - ocl-icd  # [linux]
 
   host:
     - openmm
     - python
     - pip
     - fftw
-    - swig
+    - swig 4.0.2
     - pthread-stubs
     - lxml
     #- {{ pin_compatible('numpy') }}
@@ -44,7 +63,7 @@ requirements:
     - fftw
     - openmm
     #- {{ pin_compatible('numpy') }}
-    - swig
+    - swig 4.0.2
     - pthread-stubs
     # OpenCL ICD
     - khronos-opencl-icd-loader  # [osx or win]
@@ -56,15 +75,20 @@ test:
   requires:
     - pocl  # [unix]
     - pip
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ compiler("cuda") }}  # tests need nvcc
   imports:
-    - simtk
-    - simtk.openmm
+    - openmm
+    - seekr2plugin
   commands:
-#    - python -m simtk.testInstallation
+    - python -m openmm.testInstallation
 #    # Existence tests Unix
     - pip check
     - test -f $PREFIX/lib/plugins/libSeekr2PluginCUDA$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
+    - export CUDA_VISIBLE_DEVICES=0
+    - python -m seekr2plugin
 
 about:
   home: https://github.com/seekrcentral/seekr2_openmm_plugin.git
