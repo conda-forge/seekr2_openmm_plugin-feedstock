@@ -16,7 +16,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or (cuda_compiler_version != '10.2')]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
@@ -70,6 +70,10 @@ requirements:
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
+
+outputs:
+    - name: openmm
+      requirements:
 
 test:
   requires:

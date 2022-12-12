@@ -5,3 +5,6 @@
 
 cuda_compiler_version:
   - 10.2                       # [(linux64 or win) and os.environ.get("CF_CUDA_ENABLED", "False") == "True"]
+
+cuda_compiler_version_min:
+  - 10.2                       # [linux64 or win]
