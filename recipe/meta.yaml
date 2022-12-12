@@ -71,10 +71,6 @@ requirements:
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
 
-outputs:
-    - name: openmm
-      requirements:
-
 test:
   requires:
     - pocl  # [unix]
