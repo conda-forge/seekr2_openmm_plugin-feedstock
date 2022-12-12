@@ -1,0 +1,7 @@
+# This differs from target_platform in that it determines what subdir the compiler
+#    will target, not what subdir the compiler package will be itself.
+#    For example, we need a win-64 vs2008_win-32 package, so that we compile win-32
+#    code on win-64 miniconda.
+
+cuda_compiler_version:
+  - 10.2                       # [(linux64 or win) and os.environ.get("CF_CUDA_ENABLED", "False") == "True"]
