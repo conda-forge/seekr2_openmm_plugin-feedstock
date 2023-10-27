@@ -4,7 +4,7 @@
 #    code on win-64 miniconda.
 
 cuda_compiler_version:
-  - 11.2                       # [(linux64 or win) and os.environ.get("CF_CUDA_ENABLED", "False") == "True"]
+  - 10.2                       # [(linux64 or win) and os.environ.get("CF_CUDA_ENABLED", "False") == "True"]
 
 cuda_compiler_version_min:
-  - 11.2                       # [linux64 or win]
+  - 10.2                       # [linux64 or win]
