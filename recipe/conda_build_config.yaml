@@ -8,3 +8,9 @@ cuda_compiler_version:
 
 cuda_compiler_version_min:
   - 10.2                       # [linux64 or win]
+  
+c_compiler_version: # [unix]
+  - 12.1.0 # [linux]
+
+cxx_compiler_version:
+  - 12.1.0 # [linux]

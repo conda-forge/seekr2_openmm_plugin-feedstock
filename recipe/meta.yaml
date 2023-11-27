@@ -92,8 +92,7 @@ test:
 
 about:
   home: https://github.com/seekrcentral/seekr2_openmm_plugin.git
-  license: MIT
-  license_family: MIT
+  license: MIT AND LGPL-3.0-or-later
   license_file:
     - LICENSE
   summary: An OpenMM plugin for SEEKR2.
