@@ -16,7 +16,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or (cuda_compiler_version != '10.2')]
+  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win))]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
