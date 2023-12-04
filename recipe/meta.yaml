@@ -35,7 +35,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64 or ppc641le or win]
-    - openmm 7.7
     - cmake
     - make
     - sysroot_linux-64 2.17  # [linux64]
