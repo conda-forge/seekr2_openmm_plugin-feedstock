@@ -42,7 +42,7 @@ requirements:
     - ocl-icd  # [linux]
 
   host:
-    - openmm 7.7
+    - openmm
     - python
     - pip
     - fftw
@@ -60,7 +60,7 @@ requirements:
   run:
     - python
     - fftw
-    - openmm 7.7
+    - openmm
     #- {{ pin_compatible('numpy') }}
     - swig 4.0.2
     - pthread-stubs
