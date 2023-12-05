@@ -16,10 +16,9 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win))]
+  skip: true  # [(cuda_compiler or "None") != "None"]
   script_env:
     - CONFIG
-    - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -33,7 +32,7 @@ requirements:
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc641le or win]
+    - {{ compiler('cuda') }}  # [(cuda_compiler or "None") != "None"]
     - cmake
     - make
     - sysroot_linux-64 2.17  # [linux64]
