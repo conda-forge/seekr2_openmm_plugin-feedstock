@@ -16,9 +16,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(cuda_compiler or "None") != "None"]
-  script_env:
-    - CONFIG
+  skip: true  # [(cuda_compiler or "None") == "None"]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
