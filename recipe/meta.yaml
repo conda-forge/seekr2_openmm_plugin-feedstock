@@ -16,6 +16,7 @@ source:
 
 build:
   number: {{ build }}
+  skip: true  # [not linux64]
   skip: true  # [(cuda_compiler or "None") == "None"]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
