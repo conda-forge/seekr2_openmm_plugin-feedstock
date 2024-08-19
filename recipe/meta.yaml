@@ -29,10 +29,10 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
     - swig                                   # [build_platform != target_platform]
-    - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [(cuda_compiler or "None") != "None"]
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ compiler("cuda") }}  # [(cuda_compiler or "None") != "None"]
     - cmake
     - make
     - doxygen
@@ -69,6 +69,9 @@ test:
   requires:
     - pocl  # [unix]
     - pip
+    - {{ compiler("c") }}
+    - {{ compiler("cxx") }}
+    - {{ compiler("cuda") }}  # tests need nvcc
   imports:
     - openmm
     - seekr2plugin
