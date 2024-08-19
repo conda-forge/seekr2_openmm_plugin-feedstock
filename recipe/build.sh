@@ -15,7 +15,7 @@ if [[ "$target_platform" == linux* ]]; then
 
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
         # CUDA_HOME is defined by nvcc metapackage
-        CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
+        CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME:-$PREFIX}"
         
         # From: https://github.com/floydhub/dl-docker/issues/59
         #CMAKE_FLAGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
