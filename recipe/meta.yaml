@@ -35,7 +35,6 @@ requirements:
     - {{ compiler('cuda') }}  # [(cuda_compiler or "None") != "None"]
     - cmake
     - make
-    - sysroot_linux-64 2.17  # [linux64]
     - doxygen
     - ocl-icd  # [linux]
 
@@ -70,11 +69,6 @@ test:
   requires:
     - pocl  # [unix]
     - pip
-    {% if cuda_major >= 12 %}
-    # No cuda-driver-dev nor cuda-compat in windows
-    - cuda-driver-dev  # [linux]
-    - cuda-compat  # [linux]
-    {% endif %}
   imports:
     - openmm
     - seekr2plugin
