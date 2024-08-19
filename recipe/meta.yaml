@@ -30,6 +30,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [(cuda_compiler or "None") != "None"]
     - cmake
@@ -69,9 +70,11 @@ test:
   requires:
     - pocl  # [unix]
     - pip
-    - {{ compiler("c") }}
-    - {{ compiler("cxx") }}
-    - {{ compiler("cuda") }}  # tests need nvcc
+    {% if cuda_major >= 12 %}
+    # No cuda-driver-dev nor cuda-compat in windows
+    - cuda-driver-dev  # [linux]
+    - cuda-compat  # [linux]
+    {% endif %}
   imports:
     - openmm
     - seekr2plugin

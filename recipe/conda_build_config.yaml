@@ -1,0 +1,4 @@
+channel_targets:
+- conda-forge main
+c_stdlib_version:   # [linux]
+  - 2.17            # [linux]
