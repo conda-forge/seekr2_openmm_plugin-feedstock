@@ -1,6 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.6" %}
-{% set build = 5 %}
+{% set build = 6 %}
 
 package:
   name: {{ name }}
