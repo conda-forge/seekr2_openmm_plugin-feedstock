@@ -13,7 +13,3 @@ provider:
   linux_aarch64: default
   linux_ppc64le: azure
 test: native_and_emulated
-os_version:
-  linux_64: cos7
-  linux_aarch64: cos7
-  linux_ppc64le: cos7
