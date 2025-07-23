@@ -17,7 +17,7 @@ source:
 build:
   number: {{ build }}
   skip: true  # [not linux64]
-  skip: true  # [(cuda_compiler or "None") == "None"]
+  skip: true  # [cuda_compiler_version == "None"]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -32,7 +32,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("cuda") }}  # [(cuda_compiler or "None") != "None"]
+    - {{ compiler("cuda") }}  # [cuda_compiler_version != "None"]
     - cmake
     - make
     - doxygen
