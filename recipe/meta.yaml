@@ -1,5 +1,5 @@
 {% set name = "seekr2_openmm_plugin" %}
-{% set version = "0.1.7" %}
+{% set version = "0.1.8" %}
 {% set build = 0 %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: c309943a7e4a0c230b81a54ca2f75e43edc199bc050e9e2da69082bb5af4ebfd
+  sha256: c37ce08a0404e8c1cd74e2423750e2eeea02634be82ca6a6f393edb93fe4c844
 
 # used commands:
 # wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.7.tar.gz
@@ -22,7 +22,6 @@ build:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
-  
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
@@ -52,7 +51,6 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [osx or win]
-    
   run:
     - python
     - fftw
