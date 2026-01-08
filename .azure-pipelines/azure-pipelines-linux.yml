@@ -23,6 +23,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_c_compiler_version13cuda_compil_h5eb56615
+      linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.13.____cp313:
+        CONFIG: linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.13.____cp313
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_c_compiler_version13cuda_compil_h843a3940
       linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython:
         CONFIG: linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
