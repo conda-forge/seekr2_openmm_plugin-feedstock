@@ -6,7 +6,6 @@ __migrator:
     primary_key: python
     ordering:
         python:
-            - 3.9.* *_cpython
             - 3.10.* *_cpython
             - 3.11.* *_cpython
             - 3.12.* *_cpython
