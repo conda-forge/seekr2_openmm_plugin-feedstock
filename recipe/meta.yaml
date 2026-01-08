@@ -37,6 +37,7 @@ requirements:
     - make
     - doxygen
     - ocl-icd  # [linux]
+    - setuptools
 
   host:
     - openmm
