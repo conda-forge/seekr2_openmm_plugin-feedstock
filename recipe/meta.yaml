@@ -37,11 +37,11 @@ requirements:
     - make
     - doxygen
     - ocl-icd  # [linux]
-    - setuptools
-
+    
   host:
     - openmm
     - python
+    - setuptools
     - pip
     - fftw
     - swig 4.0.2
