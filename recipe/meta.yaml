@@ -84,6 +84,7 @@ test:
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
     - export CUDA_VISIBLE_DEVICES=0
     - python -m seekr2plugin
+    - python -c "import seekr2plugin; seekr2plugin.testSeekr2Plugin()"
 
 about:
   home: https://github.com/seekrcentral/seekr2_openmm_plugin.git
