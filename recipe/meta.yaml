@@ -1,6 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.9" %}
-{% set build = 4 %}
+{% set build = 5 %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 694a3e1be230aa167a11cbc9253287f0c55820139a4d0f917696d12610f3006d
+  sha256: 5cbe771ec8fe35f818984a30e6781787b5a8b2baeda4f662fc8a3046779517b8
 
 # used commands:
 # wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.9.tar.gz
