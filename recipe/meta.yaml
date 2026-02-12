@@ -1,6 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.9" %}
-{% set build = 3 %}
+{% set build = 4 %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 684d49f293754e61b6d020a9a41b3dc797ae14cb3ac97a23f586781f31c79f17
+  sha256: 694a3e1be230aa167a11cbc9253287f0c55820139a4d0f917696d12610f3006d
 
 # used commands:
 # wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.9.tar.gz
@@ -44,7 +44,7 @@ requirements:
     - setuptools
     - pip
     - fftw
-    - swig 4.0.2
+    - swig
     - pthread-stubs
     - lxml
     - cython
@@ -58,7 +58,7 @@ requirements:
     - python
     - fftw
     - openmm
-    - swig 4.0.2
+    - swig
     - pthread-stubs
     # OpenCL ICD
     - khronos-opencl-icd-loader  # [osx or win]
