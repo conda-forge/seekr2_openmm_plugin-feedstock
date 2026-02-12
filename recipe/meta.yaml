@@ -1,6 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.9" %}
-{% set build = 5 %}
+{% set build = 6 %}
 
 package:
   name: {{ name }}
@@ -84,7 +84,7 @@ test:
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
     - export CUDA_VISIBLE_DEVICES=0
     - python -m seekr2plugin
-    - python -c "import seekr2plugin; seekr2plugin.printKeyInformationDEBUG(); seekr2plugin.testSeekr2Plugin()"
+    - python -c "import seekr2plugin; seekr2plugin.testSeekr2Plugin()"
 
 about:
   home: https://github.com/seekrcentral/seekr2_openmm_plugin.git
