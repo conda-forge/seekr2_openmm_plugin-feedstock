@@ -1,6 +1,6 @@
 {% set name = "seekr2_openmm_plugin" %}
 {% set version = "0.1.9" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: {{ name }}
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://github.com/seekrcentral/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 424c19d87603ad9c115b00f156b59374b4b63ab25e3d034c5fdb14679b5769e3
+  sha256: 4ad94bc2dd03b01ab3e56d4659e0f74b620b444e8c3e56572dfe2c285a22521c
 
 # used commands:
-# wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.8.tar.gz
-# shasum -a 256 0.1.8.tar.gz
+# wget https://github.com/seekrcentral/seekr2_openmm_plugin/archive/refs/tags/0.1.9.tar.gz
+# shasum -a 256 0.1.9.tar.gz
 
 build:
   number: {{ build }}
@@ -84,7 +84,7 @@ test:
     - test -f $PREFIX/lib/plugins/libSeekr2PluginReference$SHLIB_EXT  # [unix]
     - export CUDA_VISIBLE_DEVICES=0
     - python -m seekr2plugin
-    - python -c "import seekr2plugin; seekr2plugin.testSeekr2Plugin()"
+    - python -c "import seekr2plugin; seekr2plugin.printKeyInformationDEBUG(); seekr2plugin.testSeekr2Plugin()"
 
 about:
   home: https://github.com/seekrcentral/seekr2_openmm_plugin.git
